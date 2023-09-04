@@ -147,6 +147,72 @@
     </section>
     <!-- /Faça parte -->
 
+    <!-- Boxes -->
+    <section class= "p-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md">
+                    <div class="card bg-success text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-laptop"></i>
+                            </div>
+
+                            <h3 class="card-title mb-3">
+                                Virtual
+                            </h3>
+
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tempora dolores, sequi praesentium fugit quibusdam.
+                            </p>
+                            <a href="#" class="btn btn-info">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card bg-success text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-person-square"></i>
+                            </div>
+
+                            <h3 class="card-title mb-3">
+                                Hybrid
+                            </h3>
+
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tempora dolores, sequi praesentium fugit quibusdam.
+                            </p>
+                            <a href="#" class="btn btn-info">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card bg-success text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-people"></i>
+                            </div>
+
+                            <h3 class="card-title mb-3">
+                                In person
+                            </h3>
+
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tempora dolores, sequi praesentium fugit quibusdam.
+                            </p>
+                            <a href="#" class="btn btn-info">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Boxes -->
+
     <!-- Footer -->
     <footer class="p-5 bg-success text-white text-center position-relative">
         <div class="container">
