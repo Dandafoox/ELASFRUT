@@ -1,6 +1,6 @@
 <?php 
 include "conexao.php";
-$sql = "select * from listarfornecedores";
+$sql = "select * from tblcadfornecedor";
 $qry = mysqli_query($con,$sql);
 ?>
 
@@ -17,58 +17,66 @@ $qry = mysqli_query($con,$sql);
     <title>Lista de Fornecedores</title>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg" >
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="./img/logo3.png" width="200px" height="200px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" >
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-              <a class="nav-link" href="#">Produtos</a>
-              <a class="nav-link" href="#">Sobre </a>
-              <a class="nav-link" href="">Contatos</a>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark py-3">
+        <div class="container">
+            <img src="img/logo4.png" alt="" width="50" height="50" class="navbar-right">
+            <a href="index.php" class="navbar-brand mx-3">Elas Frut</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="listafornecedores.php" class="nav-link">Fornecedores</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="index.php #facaparte" class="nav-link">Faça Parte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#noticias" class="nav-link">Notícias</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="index.php #quemsomos" class="nav-link">Quem Somos</a>
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-      </nav>
+    </nav>
+    <!-- /navbar -->
 
+    <!-- Navbar Lateral -->
+    <nav class="nav-lateral" >
+        <a class="text-nav-lateral" href="listaprodut.php"><i class="bi bi-bag-fill"></i> Produtos</a>
+        <a class="text-nav-lateral" href="#"><i class="bi bi-truck"></i> Fornecedores</a>
+        <a class="text-nav-lateral" href="#"><i class="bi bi-share"></i> Indicar essa pagina</a>
+        <a class="text-nav-lateral" href="#"><i class="bi bi-question-square"></i> Duvidas</a>
+        <a class="text-nav-lateral" href="#"><i class="bi bi-file-text"></i> Termos de Uso</a>
+        <a class="text-nav-lateral" href="#"><i class="bi bi-file-person-fill"></i> Contatos</a>
+    </nav>
+<!-- /Navbar Lateral -->
 
-<div class="navbar-lateral">
-        <ul class="pesquisa">
-            <li>Inicio</li>
-            <li>Produtos</li>
-            <li>Pequisar Produtos</li>
-            <li>Fornecedores</li>
-            <li>Indicar essa pagina</li>
-            <li>Duvidas</li>
-            <li>Termos de Uso</li>
-            <li>Contatos</li>
-        </ul>
-    </div>
+<main class="main">
 
-    <div>
-        <input type="text">
-        <a href=""><i class="bi bi-search"></i></a>
+    <div class="btn-pesquisa">
+        <input type="text" placeholder="Pesquisar">
+        <a class="lupa" href="#"><i class="bi bi-search"></i></a>
     </div> 
 
-        <nav aria-label="Page navigation example">
-         <ul class="pagination justify-content-end">
-        <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-        </li>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">   
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
     </nav>
     
-    <form class="form-pesquesa" action="">
+    <!-- <form class="form-pesquesa" action="">
        <label > Tipo </label>
         Frutas <input  type="checkbox">
         Legumes <input  type="checkbox">
@@ -88,34 +96,41 @@ $qry = mysqli_query($con,$sql);
        <button type="Submit">Procurar</button>
        <button type="Submit">Limpar</button>
 
-    </form>
+    </form> -->
 
     <table class="table">
         <thead>
-            <tr>
-                <th scope="col">Razõa Social</th>
+            <div class="title-table">
+            <tr >
+                <th scope="col">Razão Social</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Cidade</th>
-                <th scope="col">Loja</td>
+                <th scope="col">CNPJ</th>
                 <th scope="col">Telefone</th>
-                <th scope="col">Saiba mais </th>
+               
             </tr>
+            </div>
         </thead>
+        <tbody>
         <?php
-            while($linha = mysqli_fetch_array($qry)){
-                $id = $linha['id'];
-                echo '<td>'.$linha['razaosocial'].'</td>';
-                echo '<td>'.$linha['prod '].'</td>';
-                echo '<td>'.$linha['cidadeforn '].'</td>';
-                echo '<td>'.$linha['cidadeforn '].'</td>';
-                echo  '<td> <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-square"></i></button></tr>'; 
-            
-            }
-            
+         while($linha = mysqli_fetch_array($qry)){
         ?>
+        <tr>
+            <?php  $id = $linha['id'];?>
+            <td><?php echo $linha['razaosocial'] ?></td>
+            <td><?php echo $linha['prod'] ?></td>
+            <td><?php echo $linha['cidadeforn']?></td>
+            <td><?php echo $linha['cnpj']?></td>
+            <td><?php echo $linha['telforn']?></td>
+            <td><button type="button" class="btn view_data"  id="<?php echo $id = $linha['id'];?>"><i class="bi bi-plus-square"></i></button></td>
+        </tr>
+        <?php
+         }?>
+
+         </tbody>
      </table>
 
-       <!-- Modal -->
+       <!-- Modal 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -132,11 +147,29 @@ $qry = mysqli_query($con,$sql);
             </div>
             </div>
         </div>
-    </div>
+    </div> -->
+        </main>
 
+
+    <!-- Footer -->
+    <footer class="p-5 bg-success text-white text-center position-relative">
+        <div class="container">
+            <p class="lead">Copyright &copy; 2023 Elas Frut</p>
+
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+            
+        </div>
+    </footer>
+    <!-- /Footer -->
+  
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  
+  <script src="js/dadosfornecedor.js"></script>
 </body>
-<footer>Rita de Kássia &copy 2023</footer>
+
 </html>
 
 

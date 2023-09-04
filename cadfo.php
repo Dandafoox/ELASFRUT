@@ -7,9 +7,41 @@
     <title>Cadastro de Forncedores</title>
 </head>
 <body> 
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark py-3">
+        <div class="container">
+            <img src="img/logo4.png" alt="" width="50" height="50" class="navbar-right">
+            <a href="index.php" class="navbar-brand mx-3">Elas Frut</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="listafornecedores.php" class="nav-link">Fornecedores</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="index.php #facaparte" class="nav-link">Faça Parte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#noticias" class="nav-link">Notícias</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="index.php #quemsomos" class="nav-link">Quem Somos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /navbar -->
+
     <div class="container">    
             <br>
-             <a href = "login.php"> Voltar ao Login </a> <hr>
                 <form action = "recebefo.php"  method = "post">
                     <h4>Cadastro de Fornecedores </h4> <hr>
 
@@ -36,7 +68,7 @@
                             </div>
 
                             <div class="col-3">
-                                Telefone <input type = "number"  name = "telforn" class = "form-control">
+                                Telefone <input type = "text"  name = "telforn" class = "form-control">
                             </div>
 
                             <div class="col-4">
@@ -115,7 +147,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="formFileMultiple" class="form-label" name = "fotologo"><strong> Adicionar Fotos</strong> </label>
+                            <label  class="form-label" ><strong> Adicionar Fotos</strong> </label>
                             <input class="form-control" type="file" id="formFileMultiple" multiple>
                         </div>
 

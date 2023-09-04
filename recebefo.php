@@ -1,35 +1,31 @@
 <?php
-//include "#";
+
+include "conexao.php";
 
 
 $razaosocial    = $_POST ['razaosocial'];
 $cnpj           = $_POST ['cnpj'];
-$endereco       = $_POST ['endereco'];
+$forndtcad      = $_POST ['forndtcad'];
+$emailforn      = $_POST ['emailforn'];
+$telforn        = $_POST ['telforn'];
+$fotologo          = $_POST ['fotologo'];
+$prod           = $_POST ['prod'];
+$cepforn            = $_POST ['cepforn'];
+$enderecoforn       = $_POST ['enderecoforn'];
 $numero         = $_POST ['numero'];
-$complemento    = $_POST ['complemento'];
-$cep            = $_POST ['cep'];
-$bairro         = $_POST ['bairro'];
-$cidade         = $_POST ['cidade'];
-$midiasocial    = $_POST ['midiasocial'];
-$dtcad          = $_POST ['dtcad'];
-$banco          = $_POST ['banco'];
-$agencia        = $_POST ['agencia'];
-$conta          = $_POST ['conta'];
-$fotos          = $_POST ['fotos'];
-$leguminosas    = $_POST ['leguminosas'];
-$hortalicas     = $_POST ['hortalicas'];
-$frutas         = $_POST ['frutas'];
-$vegetais       = $_POST ['vegetais'];
-$prodvendas     = $_POST ['prodvendas'];
+$complforn    = $_POST ['complforn'];
+$bairroforn         = $_POST ['bairroforn'];
+$cidadeforn         = $_POST ['cidadeforn'];
+$msociaisforn    = $_POST ['msociaisforn'];
 $quemsoueu      = $_POST ['quemsoueu'];
 
 
-$sql = "insert into (razaosocial, cnpj, endereco, numero, complemento, cep, bairro, cidade, midiasocial, dtcad, banco, agencia, conta, fotos,leguminosas, hortalicas, frutas, vegetais, prodvendas, quemsoueu)
- values ('$razaosocial','$cnpj','$endereco','$numero','$complemento','$cep','$bairro','$cidade','$midiasocial','$dtcad', '$banco','$agencia','$conta',$fotos','$leguminosas','$hortalicas','$frutas','$vegetais','$prodvendas','$quemsoueu')";
+$sql = "insert into tblcadfornecedor (razaosocial,	cnpj,	forndtcad,emailforn, telforn,	fotologo, prod, cepforn, enderecoforn,	numero,complforn,	bairroforn,	cidadeforn,	msociaisforn, quemsoueu)
+ values ('$razaosocial','$cnpj','$forndtcad','$emailforn','$telforn','$fotologo','$prod','$cepforn','$enderecoforn','$numero','$complforn','$bairroforn','$cidadeforn','$msociaisforn','$quemsoueu')";
 
 $qry = mysqli_query ($con,$sql);
 if ($qry) {
-    header ('location:confirmacao.php');
+    header ('location:listafornecedores.php');
     } else {
        echo "<h1> Registro não cadastrado </h1>";
     }

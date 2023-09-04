@@ -1,8 +1,9 @@
-<?php
+<?php 
 
-$server = "localhost";
-$user = "root";
-$pass = '';
-$bd = "bdproj";
+$servidor = 'localhost';
+$usuario = 'root';
+$senha = '';
+$bd = 'dbelasfrut';
 
-$con = mysqli_connect("$server", "$user","$pass", "$bd");
+$con = mysqli_connect($servidor,$usuario,$senha,$bd);
+
