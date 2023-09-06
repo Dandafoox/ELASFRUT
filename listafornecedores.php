@@ -1,7 +1,8 @@
 <?php 
 include "conexao.php";
-$sql = "select * from tblcadfornecedor";
-$qry = mysqli_query($con,$sql);
+
+ //$sql = "select * from tblcadfornecedor";
+// $qry = mysqli_query($con,$sql);
 ?>
 
 
@@ -63,10 +64,13 @@ $qry = mysqli_query($con,$sql);
 
 <main class="main">
 
+<form action="">
     <div class="btn-pesquisa">
-        <input type="text" placeholder="Pesquisar">
+        <input name="busca" value="" type="text" placeholder="Pesquisar">
         <a class="lupa" href="#"><i class="bi bi-search"></i></a>
-    </div> 
+    </div>
+</form>
+     
 
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end">   
@@ -112,20 +116,48 @@ $qry = mysqli_query($con,$sql);
             </div>
         </thead>
         <tbody>
-        <?php
-         while($linha = mysqli_fetch_array($qry)){
-        ?>
-        <tr>
-            <?php  $id = $linha['id'];?>
-            <td><?php echo $linha['razaosocial'] ?></td>
-            <td><?php echo $linha['prod'] ?></td>
-            <td><?php echo $linha['cidadeforn']?></td>
-            <td><?php echo $linha['cnpj']?></td>
-            <td><?php echo $linha['telforn']?></td>
-            <td><button type="button" class="btn view_data"  id="<?php echo $id = $linha['id'];?>"><i class="bi bi-plus-square"></i></button></td>
-        </tr>
-        <?php
-         }?>
+            <?php 
+            if (!isset($_GET['busca'])) {
+                ?> 
+                <tr>
+                    <td colspan=5>Digite algo para Pesquisar</td>
+                </tr>
+                <?php
+            } else { 
+                $pesquisa = $mysqli->real_escape_string($_GET['busca']); //o real_escape_string protege de SQL INJETIONS
+                $sql_code = "SELECT * FROM tblcadfornecedor WHERE 
+                razaosocial LIKE '%$pesquisa%' 
+                OR prod LIKE '%$pesquisa%' 
+                OR cidadeforn LIKE '%$pesquisa%' ";
+
+                $sql_query = $mysqli -> query($sql_code) or die ("ERRO AO CONSULTAR!" . $mysqli->error);
+
+                if ($sql_query->num_rows == 0) {
+                ?>
+                <tr>
+                    <td colspan=5>Nenhum Resultado Encontrado</td>
+                </tr>
+                <?php
+                } else {
+                    while ($dados = $sql_query->fetch_assoc()) {
+                        $id = $dados['id'];
+                    ?>
+                        <tr>
+                            <td> <?php echo $dados['id']; ?> </td>
+                            <td> <?php echo $dados['razaosocial']; ?> </td>
+                            <td> <?php echo $dados['prod']; ?> </td>
+                            <td> <?php echo $dados['cidadeforn']; ?> </td>
+                            <td> <?php echo $dados['cnpj']; ?> </td>
+                            <td> <?php echo $dados['telforn']; ?> </td>
+                            <td><button type="button" class="btn view_data"  id="<?php echo $id = $linha['id'];?>"><i class="bi bi-plus-square"></i></button></td>
+                        </tr>
+                        <?php
+                    }
+                }
+                ?>
+            <?php    
+            }
+            ?>
 
          </tbody>
      </table>
@@ -171,20 +203,4 @@ $qry = mysqli_query($con,$sql);
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
