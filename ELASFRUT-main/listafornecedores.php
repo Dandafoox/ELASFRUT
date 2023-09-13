@@ -101,8 +101,60 @@ $qry = mysqli_query($con,$sql);
             <td><?php echo $linha['cidadeforn']?></td>
             <td><?php echo $linha['cnpj']?></td>
             <td><?php echo $linha['telforn']?></td>
-            <td><button type="button" class="btn view_data"  id="<?php echo $id = $linha['id'];?>"><i class="bi bi-plus-square"></i></button></td>
+            <td><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $linha['id']?>"><i class="bi bi-plus-square"></i></button></td>
         </tr>
+
+
+        <!-- Inicio modalModal -->
+        <div class="modal fade" id="exampleModal<?php echo $linha['id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title text-center" id="exampleModalLabel" ><?php echo $linha['razaosocial']?></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+        
+              <p><strong>ID: </strong><?php echo $linha['id']?></p>
+              <p><strong>Razão Social : </strong><?php echo $linha['razaosocial'] ?></p>
+              <p><strong>CNPJ : </strong><?php echo $linha['cnpj']?></p>
+              <p><strong>Fornecedor : </strong><?php echo $linha['forndtcad']?></p>
+              <p><strong>E-mail : </strong><?php echo $linha['emailforn']?></p>
+              <p><strong>Telefone : </strong><?php echo $linha['telforn']?></p>
+              <p><strong>Produto : </strong><?php echo $linha['prod']?></p>
+              <p><strong>CEP : </strong><?php echo $linha['cepforn']?></p>
+              <p>
+                <strong> Endereço : </strong><?php echo $linha['enderecoforn']?> 
+                <strong> N° : </strong><?php echo $linha['numero']?>
+            </p>
+              <p><strong>Complemento : </strong><?php echo $linha['complforn']?></p>
+            <p>
+                <strong>Bairro : </strong><?php echo $linha['bairroforn']?>
+                <strong>Cidade : </strong><?php echo $linha['cidadeforn']?>
+            </p><hr>
+              <p><strong>Quem sou eu : </strong><br><?php echo $linha['quemsoueu']?></p>
+              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+            </div>
+        </div>
+        </div><!-- Fim Modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <?php
          }?>
 
